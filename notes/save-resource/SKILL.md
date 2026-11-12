@@ -1,52 +1,36 @@
 ---
 name: save-resource
-description: Save a link into notes or a watch issue.
+description: Resolve a link and file it as a notes issue.
 version: 0.1.0
 license: MIT
 metadata:
   hermes:
     tags: [notes, web, github]
     category: notes
-    related_skills: [notes-issue, notes-hierarchy]
+    related_skills: [create-notes-issue]
     requires_toolsets: [web]
 ---
 
 # Save resource
 
-Use this when the user sends a link, article, repo, or similar resource to keep. Prefer a Markdown note in the notes repo (for example `lfarci/notes`). Open a watch issue only when they want to track follow-up work. Use `web_extract` / `web_search` plus the GitHub MCP (`get_file_contents`, `create_or_update_file`, `search_issues`, `issue_read`, `issue_write`, `sub_issue_write`). Do not use `gh` or the terminal. Ask before writing.
+Use this when the user sends a link (article, post, repo, or similar) to keep. Do not write files. Open one focused issue per concern in the notes repo (for example `lfarci/notes`) by following `create-notes-issue`. Use `web_extract` / `web_search` plus the GitHub MCP tools named in that skill. Do not use `gh` or the terminal. Do not dump links in chat.
 
-## Where it goes
+## Resolve the link first
 
-- Default file location: `projects/`. Use `career/` only for professional profile, brand, or job-search material.
-- Never create a note at the repo root (only `README.md` and `TODO.md` belong there). Do not leave named notes in `inbox/`.
-- Nested folders only when one effort already has several files. Otherwise a single file at `projects/` (or an existing pile) is enough.
-- For a saved link, keep the note short. Do not invent a project plan.
-- If they want to "keep an eye on it" or try it later, also open a **Task** under the matching Experiment (see `notes-issue` and `notes-hierarchy`), and link the note.
+1. Fetch the URL with `web_extract`. Expand short links (for example `lnkd.in`) to the canonical destination before deciding what to file.
+2. Prefer official vendor sources (docs, repo, or product page) over a secondary write-up or aggregator. If the page is a mirror or recap, extract again from the official URL.
+3. If the page lists several resources, extract each direct URL, resolve those too, and treat each distinct concern separately — one issue per concern, not one issue that lists everything.
+4. If extract is thin, use `web_search` only to find a better canonical URL, then extract again. Do not invent details the page does not support.
 
-## Note shape
+## Then file it
 
-1. Title in sentence case; no emoji.
-2. Optional short TL;DR (2–3 bullets).
-3. Brief summary of what it is and why it matters. Do not copy long passages.
-4. End with **References** (or **Further reading**) and the canonical URL. Use relative Markdown links to other notes, never `[[wiki links]]`.
+Follow `create-notes-issue`: search for duplicates and a parent, default to a Task under the most relevant existing Idea or Experiment, draft the issue (what it is, source and direct links, why it matters, out of scope), ask before writing, then create, attach, and comment on the parent as that skill describes.
 
-File names are sentence-case or short descriptive slugs, consistent with nearby files (for example `projects/topic-name.md`).
-
-## Steps
-
-1. Fetch the page with `web_extract`. If extract is thin, use `web_search` only to locate a better canonical URL, then extract again. Do not invent details the page does not support.
-2. Search existing notes (`get_file_contents` / path guesses under `projects/` and `career/`) and issues (`search_issues`) so you append or cross-link instead of duplicating.
-3. Decide: update an existing note, create a new note, and/or open a watch Task. Show the user the path, a short draft, and any proposed issue (title, parent, body). Wait for a yes.
-4. Write the file with `create_or_update_file` on the notes repo's default branch (usually `main`). If the file already exists, call `get_file_contents` first and pass its `sha` on the update. Commit message like `Add note on <topic>.`
-5. If a watch issue is wanted, follow `notes-issue` (draft, duplicate check, ask) and `notes-hierarchy` (attach to the right Experiment). Link the note in the issue and the issue in the note.
-6. Report the file path and, if any, the issue number.
+Reply with one short line and the issue link (or one line per issue if several concerns were filed). Remind the user to set Projects v2 fields, as in `create-notes-issue`. No files, and no link-dumping in the reply.
 
 ## Pitfalls
 
-- Updating without the current `sha` will fail or clobber; always re-read before `create_or_update_file`.
-- Do not paste the full article into the repo or the issue.
-- Career facts and salary material belong under `career/` and must not be invented.
-
-## Verification
-
-The note exists at the agreed path, summarizes the source with a reference link, and any watch issue is a Task under the right Experiment and points at the note.
+- Do not write Markdown (or any other) files into the notes repo.
+- Do not paste a list of unresolved or raw short links into chat or into a single catch-all issue.
+- Do not skip extract and file from the URL alone.
+- Career, profile, or job-search material still belongs under the matching existing parent, not a new Idea by default.
