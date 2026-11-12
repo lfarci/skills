@@ -23,6 +23,6 @@ Inspired by Matt Pocock's [wayfinder](https://github.com/mattpocock/skills/blob/
 2. Verify each claim independently. Re-read the issue and comments. If a file, path, or commit in the lab repo is cited, fetch it with `get_file_contents` and check that the evidence actually supports the claim. Treat unverified claims as still open.
    Done when every claim is verified, unsupported, or marked as needing more evidence.
 3. Propose the writes: a short progress or resolution comment, which finished Tasks to close, and how the parent index will be updated (a short `add_issue_comment`, or `issue_write` only if the parent already has a checklist in its body). Wait for a yes. Close nothing that was not verified, and merge nothing.
-   Done when the user has approved the comment, close, and index plan.
-4. Apply the approved writes with `add_issue_comment` and, for finished Tasks, `issue_write` to close them. Update the parent index. Reply with one short line and the issue links.
+   Done when the user has approved the comment, the closes, and the parent-index update.
+4. Apply the approved writes with `add_issue_comment` and, for finished Tasks, `issue_write` to close them as **completed** (see **Closing issues** in `create-lab-issue`). Update the parent index. Reply with one short line and the issue links.
    Done when approved comments and closes are in place, the parent index points at the resolution, unverified work is unchanged, and nothing was merged or deleted.

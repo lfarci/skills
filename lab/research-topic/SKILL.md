@@ -7,7 +7,7 @@ metadata:
   hermes:
     tags: [lab, web, github]
     category: lab
-    related_skills: [create-lab-issue, save-resource, grill-plan]
+    related_skills: [create-lab-issue, save-resource, grill-idea]
     requires_toolsets: [web]
 ---
 
