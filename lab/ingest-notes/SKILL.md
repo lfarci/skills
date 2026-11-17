@@ -1,7 +1,7 @@
 ---
 name: ingest-notes
 description: Synthesize source notes into concept notes in the lab repo's wiki.
-version: 0.2.0
+version: 0.3.0
 license: MIT
 metadata:
   hermes:
@@ -26,7 +26,7 @@ Exporting from a tool is out of scope; this skill starts from sources already co
    Done when every source is either dropped with a reason or assigned to a topic and destination.
 3. Show the user the target tree of concept notes, the counts, and the flags. Wait for a yes, or apply the changes they ask for.
    Done when the user has approved the plan.
-4. Write each concept note as `wiki/FILING.md` says: one topic, a one-to-two-sentence summary under the title, descriptive headings, short plain sentences, consistent terms, bullets for parallel facts, key entities and every original URL spelled out, uncertainty and omissions marked, a `## Related notes` section, and a closing `## Sources` section linking each preserved source file. Merge into canonical notes instead of duplicating them. Update the folder indexes. Leave the source folders unchanged.
+4. Write each concept note as `wiki/FILING.md` says: one topic, a one-to-two-sentence summary under the title, descriptive headings, short plain sentences, consistent terms, bullets for parallel facts, key entities and every original URL spelled out, uncertainty and omissions marked, a `## Related notes` section, and a closing `## Sources` section linking each preserved source file. Merge into canonical notes instead of duplicating them. Never create a note that holds a single link; fold it into the closest broader note or bookmarks list. Split a long list that spans several regions or groups into one note per group plus an index. Update the folder indexes. Leave the source folders unchanged.
    Done when every assigned source is cited by a concept note, each new note is indexed, and the source folders are untouched.
 5. Run `compare-note-coverage` to build or refresh the coverage ledger and fix anything it reports as not captured by mistake.
    Done when the ledger is committed and every *Partial* or *Not captured* row has a stated reason.
