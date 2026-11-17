@@ -14,6 +14,7 @@ lab/
   research-topic/SKILL.md
   grill-idea/SKILL.md
   sync-issue-progress/SKILL.md
+  ingest-notes/SKILL.md
 ```
 
 - `create-lab-issue` — create an issue in the lab repo (for example `lfarci/notes`) and attach it under the right Idea → Experiment → Task parent. Source of truth for hierarchy, titles, and bodies; the other lab skills follow it.
@@ -24,6 +25,7 @@ lab/
 - `research-topic` — investigate a question against official sources and file a cited issue or comment (no files).
 - `grill-idea` — relentlessly interview an Idea until it is well scoped, or close it as not planned if it is not worth pursuing.
 - `sync-issue-progress` — verify claimed progress, comment, close finished Tasks, and update the parent index (never merge, never delete).
+- `ingest-notes` — file notes exported from another tool (Keep, Notion, …) into the wiki by subject, following the lab repo's `wiki/FILING.md`, and open one PR (never merge).
 
 The `lab/` group is a category, not the Hermes default tap root (`skills/`). Install skills one at a time (commands below). To add this repo as a tap later, set the tap path to `lab/`.
 
@@ -42,6 +44,7 @@ sudo hermes -p lab-master skills install lfarci/skills/lab/review-backlog
 sudo hermes -p lab-master skills install lfarci/skills/lab/research-topic
 sudo hermes -p lab-master skills install lfarci/skills/lab/grill-idea
 sudo hermes -p lab-master skills install lfarci/skills/lab/sync-issue-progress
+sudo hermes -p lab-master skills install lfarci/skills/lab/ingest-notes
 ```
 
 Or from a raw `SKILL.md` URL, for example:
