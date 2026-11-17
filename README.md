@@ -15,6 +15,9 @@ lab/
   grill-idea/SKILL.md
   sync-issue-progress/SKILL.md
   ingest-notes/SKILL.md
+  sort-note-sources/SKILL.md
+  compare-note-coverage/SKILL.md
+  clean-up-migration/SKILL.md
 ```
 
 - `create-lab-issue` — create an issue in the lab repo (for example `lfarci/notes`) and attach it under the right Idea → Experiment → Task parent. Source of truth for hierarchy, titles, and bodies; the other lab skills follow it.
@@ -25,7 +28,12 @@ lab/
 - `research-topic` — investigate a question against official sources and file a cited issue or comment (no files).
 - `grill-idea` — relentlessly interview an Idea until it is well scoped, or close it as not planned if it is not worth pursuing.
 - `sync-issue-progress` — verify claimed progress, comment, close finished Tasks, and update the parent index (never merge, never delete).
-- `ingest-notes` — file notes exported from another tool (Keep, Notion, …) into the wiki by subject, following the lab repo's `wiki/FILING.md`, and open one PR (never merge).
+- `ingest-notes` — synthesize source notes already in the lab repo (Keep, Notion, or new captures) into topic-based concept notes written for retrieval, following `wiki/FILING.md`, and open one PR (never merge).
+- `sort-note-sources` — triage source notes (keep or drop) and group the kept ones into topics with a destination note each, before ingestion.
+- `compare-note-coverage` — map every source file to the concept notes that cite it, check URLs and content, and update the coverage ledger.
+- `clean-up-migration` — after the user reviews the ledger, delete a migration folder in its own PR and rewrite source links so none break (never merge).
+
+Exporting from a tool (Google Keep Takeout, Notion) is a one-time step and has no skill.
 
 The `lab/` group is a category, not the Hermes default tap root (`skills/`). Install skills one at a time (commands below). To add this repo as a tap later, set the tap path to `lab/`.
 
@@ -45,6 +53,9 @@ sudo hermes -p lab-master skills install lfarci/skills/lab/research-topic
 sudo hermes -p lab-master skills install lfarci/skills/lab/grill-idea
 sudo hermes -p lab-master skills install lfarci/skills/lab/sync-issue-progress
 sudo hermes -p lab-master skills install lfarci/skills/lab/ingest-notes
+sudo hermes -p lab-master skills install lfarci/skills/lab/sort-note-sources
+sudo hermes -p lab-master skills install lfarci/skills/lab/compare-note-coverage
+sudo hermes -p lab-master skills install lfarci/skills/lab/clean-up-migration
 ```
 
 Or from a raw `SKILL.md` URL, for example:
