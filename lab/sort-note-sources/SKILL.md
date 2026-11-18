@@ -1,7 +1,7 @@
 ---
 name: sort-note-sources
 description: Triage source notes and group them into topics before ingestion.
-version: 0.2.0
+version: 0.3.0
 license: MIT
 metadata:
   hermes:
@@ -15,6 +15,14 @@ metadata:
 When source notes in the lab repo (for example a migration folder or a batch of captures in `lfarci/notes`) need curating before they are written up, decide what to keep, what to drop, and which topic each kept source feeds. Tools: the GitHub MCP tools `get_file_contents` and `search_code`. Terminal and `gh` stay unused.
 
 **Source of truth:** `wiki/FILING.md` (sections *Drop or keep?*, *Where does it go?*, *Synthesize into concept notes*, and *Flag borderline items*). Read it every time. If it is missing, stop and ask.
+
+Placement rules that must match the current filing guide:
+
+- Default to **split**: each note focuses on one topic. Mixed personal-and-general sources become two linked notes, not one combined note.
+- `me/` holds things about the user and the working material of his practices. There is no top-level `work/`, `cooking/`, or `learning/`.
+- Learning (goals, courses, languages, certification study plans and exam history) goes in `me/learn/` (not `me/learning/`). Cooking goes in `me/home/cooking/`. Health follow-ups go in `me/health/`. Employment guides go in `me/career/guides/`.
+- `me/career/projects/` is a record of historical projects that prove experience (professional or personal). `tech/` holds discovered knowledge and personal technical notes.
+- `finance/` is a top-level placeholder for general finance knowledge. Personal budgets would go under `me/` when they exist.
 
 The deliverable is a sorting plan in the chat, or in the PR that `ingest-notes` opens. Write no wiki files and change no source files. Never put a credential or a sensitive value in the plan: name such sources by title and field only.
 

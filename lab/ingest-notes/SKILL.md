@@ -1,7 +1,7 @@
 ---
 name: ingest-notes
 description: Synthesize source notes into concept notes in the lab repo's wiki.
-version: 0.3.0
+version: 0.4.0
 license: MIT
 metadata:
   hermes:
@@ -15,6 +15,8 @@ metadata:
 When the user wants source notes that are already in the lab repo (for example `lfarci/notes`) — a migration folder from another tool, or a batch of new captures — turned into wiki notes, synthesize them into topic-based **concept notes** with the repo's own filing rules. Do not copy sources one to one. Tools: the GitHub MCP tools `get_file_contents` and `search_code` to read, then `create_branch`, `push_files`, and `create_pull_request` to propose the change. Terminal and `gh` stay unused.
 
 **Source of truth:** `wiki/FILING.md` in the lab repo — keep or drop, where a note goes, how to synthesize concept notes, how to write them (including *Writing for retrieval*), the coverage ledger, and how to flag borderline items — together with `AGENTS.md` and `wiki/AGENTS.md`. Read them every time; this skill only sequences the work. If `wiki/FILING.md` is missing, stop and ask.
+
+Apply the current placement rules while writing: default to split (one topic per note); put learning in `me/learn/`, cooking in `me/home/cooking/`, health in `me/health/`, and employment guides in `me/career/guides/`; treat `me/career/projects/` as historical project records that prove experience, and `tech/` as discovered knowledge and personal technical notes; leave `finance/` as the general-knowledge placeholder.
 
 Exporting from a tool is out of scope; this skill starts from sources already committed. The deliverable is one pull request. Never merge it: the user reviews every notes PR. A note does not become an Idea, Experiment, or Task issue; if the user wants to pursue an ingested idea, hand it to `create-lab-issue` as a separate step.
 

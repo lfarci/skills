@@ -1,7 +1,7 @@
 ---
 name: compare-note-coverage
 description: Map source notes to wiki concept notes and report coverage gaps.
-version: 0.1.0
+version: 0.2.0
 license: MIT
 metadata:
   hermes:
@@ -14,7 +14,7 @@ metadata:
 
 When the user wants to know whether the wiki in the lab repo (for example `lfarci/notes`) captures everything in a set of source notes — after an ingestion, or before deleting a migration folder — build the coverage ledger. Tools: the GitHub MCP tools `get_file_contents` and `search_code`, then `create_branch`, `push_files`, and `create_pull_request` when the ledger changes. Terminal and `gh` stay unused.
 
-**Source of truth:** `wiki/FILING.md` (section *Preserve sources and keep a coverage ledger*) for the ledger's location, statuses, and format. Read it every time. If it is missing, stop and ask.
+**Source of truth:** `wiki/FILING.md` (section *Preserve sources and keep a coverage ledger*) for the ledger's location, statuses, and format. Read it every time. If it is missing, stop and ask. When recording destination paths, use the current filing tree (`me/learn/`, `me/home/cooking/`, `me/career/guides/`, `me/health/`, and so on), not the retired top-level `learning/`, `cooking/`, or `work/` folders.
 
 The deliverable is the updated ledger file in a pull request (or in the ingestion PR that asked for it) plus a short comparison report. Never merge a notes PR. Never copy an omitted sensitive value into the ledger or the report: describe it by field.
 
