@@ -2,6 +2,12 @@
 
 Personal [Hermes Agent](https://hermes-agent.nousresearch.com/) skills. Each skill lives in its own folder with a `SKILL.md`.
 
+## Conventions
+
+- Write in simple, plain language.
+- One fact lives in one place. Link to it; do not copy it. If another skill already covers a step, name that skill instead of repeating it.
+- Do not host agent skills in `lfarci/notes`. Notes may link here.
+
 ## Layout
 
 ```
@@ -18,6 +24,11 @@ lab/
   sort-note-sources/SKILL.md
   compare-note-coverage/SKILL.md
   clean-up-migration/SKILL.md
+learn/
+  triage-certification-resources/SKILL.md
+  walk-through-certification-module/SKILL.md
+  write-certification-notes/SKILL.md
+  quiz-certification-knowledge/SKILL.md
 ```
 
 - `create-lab-issue` — create an issue in the lab repo (for example `lfarci/notes`) and attach it under the right Idea → Experiment → Task parent. Source of truth for hierarchy, titles, and bodies; the other lab skills follow it.
@@ -35,7 +46,18 @@ lab/
 
 Exporting from a tool (Google Keep Takeout, Notion) is a one-time step and has no skill.
 
-The `lab/` group is a category, not the Hermes default tap root (`skills/`). Install skills one at a time (commands below). To add this repo as a tap later, set the tap path to `lab/`.
+## Learn
+
+Certification study skills, written for any exam. They were generalized from the GH-600 study skills that used to live in `lfarci/notes`.
+
+- `triage-certification-resources` — find and judge official and original prep resources; exclude exam dumps. Use `research-topic` to file general research as a lab issue, and `save-resource` to keep a single link as an issue.
+- `walk-through-certification-module` — teach an official module one page at a time, then check understanding with one question.
+- `write-certification-notes` — create, update, or audit short official-source module notes. The note layout lives only in this skill.
+- `quiz-certification-knowledge` — run original knowledge checks and mixed tests.
+
+In `lfarci/notes`, study plans, exam history, personal context, and the review log live under `wiki/me/learn/certifications/<exam>/`. Module notes, practice materials, and official source lists live under `wiki/tech/certifications/<exam>/`. An `AGENTS.md` beside the knowledge workspace may add exam-specific rules; it should link here rather than copy these skills.
+
+The `lab/` and `learn/` groups are categories, not the Hermes default tap root (`skills/`). Install skills one at a time (commands below). To add this repo as a tap later, set the tap path to the group you want (`lab/` or `learn/`).
 
 ## Install
 
@@ -56,6 +78,10 @@ sudo hermes -p lab-master skills install lfarci/skills/lab/ingest-notes
 sudo hermes -p lab-master skills install lfarci/skills/lab/sort-note-sources
 sudo hermes -p lab-master skills install lfarci/skills/lab/compare-note-coverage
 sudo hermes -p lab-master skills install lfarci/skills/lab/clean-up-migration
+sudo hermes -p lab-master skills install lfarci/skills/learn/triage-certification-resources
+sudo hermes -p lab-master skills install lfarci/skills/learn/walk-through-certification-module
+sudo hermes -p lab-master skills install lfarci/skills/learn/write-certification-notes
+sudo hermes -p lab-master skills install lfarci/skills/learn/quiz-certification-knowledge
 ```
 
 Or from a raw `SKILL.md` URL, for example:
